@@ -4,11 +4,18 @@ import re
 sample_text = Path("sample_text.txt")
 f = open("sample_text.txt")
 
-def freq():
+def file_arr():
+    file_arr = []
     for text in f:
-        print(text)
+        file_arr.append(text)
 
->>> import re
->>> m = re.search('(?<=abc)def', 'abcdef')
->>> m.group(0)
-'def'
+    return file_arr
+
+file_arr = file_arr()
+
+def freq(file_arr):
+    for text in file_arr:
+        morty_strs = re.search("(?<=Morty: )", text)
+        print(morty_strs.group(0))
+
+freq(file_arr)
