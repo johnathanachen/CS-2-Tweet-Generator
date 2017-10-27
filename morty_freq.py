@@ -11,7 +11,35 @@ def get_transcript_html():
     dialouge_list = re.findall( '<b>Morty:</b>(.*?)<br/>', str(transcript_list), re.DOTALL)
     return dialouge_list
 
-def histrogram(dialouge_list):
+source_text = get_transcript_html()
+
+def _get_words(source_text):
+    word_list = []
+    for sentence in source_text:
+        word_list.append(sentence.split(' '))
+    combined_word_list = [inner for outer in word_list for inner in outer]
+    remove_unicode = [word.strip('\xa0') for word in combined_word_list]
+    for word in remove_unicode:
+        if "</i>" in word:
+            remove_unicode.remove(word)
+    for word in remove_unicode:
+        if "<i>" in word:
+            remove_unicode.remove(word)
+    return remove_unicode
+
+only_words = _get_words(source_text)
+
+def histrogram(only_words):
+    word_count = {}
+    for word in only_words:
+        if word in word_count:
+            word_count[word] += 1
+        else:
+            word_count[word] = 1
+    print(word_count)
+
+
+histrogram(only_words)
 
 
     # print(transcript_list)
