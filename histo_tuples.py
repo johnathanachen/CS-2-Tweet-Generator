@@ -46,6 +46,14 @@ def histrogram(only_words):
 
     for word in word_count:
         tuple_list.append(tuple(word))
-    print(tuple_list)
 
-histrogram(only_words)
+    return tuple_list
+
+tuples = histrogram(only_words)
+
+def save_to_txt(tuples):
+    with open ('tuple_to_text.txt','w') as f:
+        for i in tuples:
+            f.write(str(i) + '\n')
+
+save_to_txt(tuples)
