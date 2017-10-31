@@ -36,10 +36,22 @@ def histrogram(only_words):
             word_count[word] += 1
         else:
             word_count[word] = 1
-    print(word_count)
+    return word_count
+
+histo_dict = histrogram(only_words)
+
+def sort_histogram(histo_dict):
+    value_list = histo_dict.values()
+    list_values = list(value_list)
+    list_values.sort()
+    sorted_values = sorted(histo_dict, key=lambda x: histo_dict[x])
+    for k in sorted_values:
+        print("{} : {}".format(k, histo_dict[k]))   
 
 
-histrogram(only_words)
+
+sort_histogram(histo_dict)
+
 
 
 
