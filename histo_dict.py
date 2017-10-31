@@ -42,6 +42,7 @@ def histrogram(only_words):
 histrogram(only_words)
 
 
+
     # print(transcript_list)
     # list_html = transcript_html.split('price')
 
