@@ -14,9 +14,15 @@ def term_frequency(word, histrogram_list):
     time = histrogram_list[word] / len(histrogram_list)
     print(word, time)
 
+
+def pick_words(word1, word2, word3, word4)
+    pass
+
 def main():
     pick_random_world()
     term_frequency(word, histrogram_list)
+
+
 
 main()
 
