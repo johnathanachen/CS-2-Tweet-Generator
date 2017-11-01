@@ -42,6 +42,18 @@ def histrogram(only_words):
             word_count.append(arr_word)
             added_words.append(word)
             arr_word.append(1)
-    print(word_count)
+    return word_count
 
-histrogram(only_words)
+counts = histrogram(only_words)
+
+def count_option(counts):
+    all_same = []
+    for i in counts:
+        if i[1] == i[1]:
+            word = [i[0]]
+            all_same.append(word)
+            print(i[1])
+            x = [(i[1], all_same)]
+            print(x)
+
+count_option(counts)
