@@ -46,7 +46,7 @@ def sort_histogram(histo_dict):
     list_values.sort()
     sorted_values = sorted(histo_dict, key=lambda x: histo_dict[x])
     for k in sorted_values:
-        print("{} : {}".format(k, histo_dict[k]))   
+        answer = "{} : {}".format(k, histo_dict[k])
 
 
 
