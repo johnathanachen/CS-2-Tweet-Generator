@@ -19,3 +19,5 @@ def main():
     term_frequency(word, histrogram_list)
 
 main()
+
+# pick 1,000 times and return the amount of time it shows up
