@@ -12,18 +12,17 @@ word = pick_random_world()
 
 def term_frequency(word, histrogram_list):
     time = histrogram_list[word] / len(histrogram_list)
-    print(word, time)
+    # print_out = print
+    return(word, time)
 
 
 # def pick_words(word1, word2, word3, word4)
 #     pass
 
-def main():
+def run_sampling():
     pick_random_world()
-    term_frequency(word, histrogram_list)
+    return term_frequency(word, histrogram_list)
 
-
-
-main()
+print(run_sampling())
 
 # pick 1,000 times and return the amount of time it shows up
