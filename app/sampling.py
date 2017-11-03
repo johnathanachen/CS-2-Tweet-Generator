@@ -21,8 +21,9 @@ def term_frequency(word, histrogram_list):
 
 def run_sampling():
     pick_random_world()
-    return term_frequency(word, histrogram_list)
+    freq = str(term_frequency(word, histrogram_list))
+    return freq
 
-print(run_sampling())
+
 
 # pick 1,000 times and return the amount of time it shows up
