@@ -1,12 +1,15 @@
 from flask import Flask
-from sampling import *
-from histo_dict import *
+import cleanup
+import tokenize
+import word_count
+import sample
+import sentence
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def hello():
-    return run_sampling()
+    return "hello the name is Johno and I love to ing and dance"
 
 
 if __name__ == '__main__':
