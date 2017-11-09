@@ -14,9 +14,10 @@ def get_transcript_html():
 
 def single_words(dialouge_list):
     """ Given dailouge list, return a list seperated by words """
-    long_string = ' '.join(dialouge_list)
-    print(long_string)
-
+    word_list = []
+    for item in dialouge_list:
+        word_list.extend(item.split())
+    print(word_list)
 
 def run_srape():
     """ Start scrape script and return list of single words """
