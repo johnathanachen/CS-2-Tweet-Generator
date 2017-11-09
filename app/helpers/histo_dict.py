@@ -1,29 +1,18 @@
-import bs4 as bs
-from urllib.request import urlopen
-import re
-
-def get_transcript_html():
-    """ Scrape site for transcript and returns all speech sections in a list """
-    transcript_url = 'http://time.com/4912055/donald-trump-phoenix-arizona-transcript/'
-    transcript_url_request = urlopen(transcript_url)
-    transcript_html = transcript_url_request.read()
-    transcript_html = transcript_html.decode('utf-8')
-    transcript_list = bs.BeautifulSoup(transcript_html, "lxml").find_all('figure', attrs={"class":"blockquote"})
-    dialouge_list = re.findall( '<p>TRUMP: (.*?)</p>', str(transcript_list), re.DOTALL)
-    return dialouge_list
-
-def single_words(dialouge_list):
-    """ Given dailouge list, return a list seperated by words """
-    long_string = ' '.join(dialouge_list)
-    print(long_string)
-
-
-def run_srape():
-    """ Start scrape script and return list of single words """
-    dialouge_list = get_transcript_html()
-    single_words(dialouge_list)
-
-run_srape()
+# import bs4 as bs
+# # from urllib.request import urlopen
+# import re
+#
+# # def get_transcript_html():
+# #     transcript_url = 'http://rickandmorty.wikia.com/wiki/Pilot/Transcript'
+# #     transcript_url_request = urlopen(transcript_url)
+# #     transcript_html = transcript_url_request.read()
+# #     transcript_html = transcript_html.decode('utf-8')
+# #     transcript_list = bs.BeautifulSoup(transcript_html, "lxml").find_all('div', attrs={"class":"poem"})
+# #     dialouge_list = re.findall( '<b>Morty:</b>(.*?)<br/>', str(transcript_list), re.DOTALL)
+# #     return dialouge_list
+# #
+# # source_text = get_transcript_html()
+#
 # def _get_words(source_text):
 #     word_list = []
 #     for sentence in source_text:
@@ -62,11 +51,8 @@ run_srape()
 #
 #
 # sort_histogram(histo_dict)
-
-
-
-
-    # print(transcript_list)
-    # list_html = transcript_html.split('price')
-
-    # <b>Morty:</b> *rubs his eyes* What, Rick? What’s going on?<br/>
+#
+#
+#
+#
+# get_transcript_html()
