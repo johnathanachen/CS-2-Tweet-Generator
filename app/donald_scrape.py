@@ -1,5 +1,6 @@
 import bs4 as bs
 from urllib.request import urlopen
+from string import punctuation
 import re
 
 def get_transcript_html():
@@ -12,19 +13,30 @@ def get_transcript_html():
     dialouge_list = re.findall( '<p>TRUMP: (.*?)</p>', str(transcript_list), re.DOTALL)
     return dialouge_list
 
+def remove_punctuation(dialouge_list):
+    """ Given dialouge_list, remove all symbols such as period, question marks, period, etc """
+    long_string = ' '.join(dialouge_list)
+    long_string = ''.join(c for c in long_string if c not in punctuation)
+    print(long_string)
+
+
+
 def single_words(dialouge_list):
     """ Given dailouge list, return a list seperated by words """
     word_list = []
     for item in dialouge_list:
         word_list.extend(item.split())
-    print(word_list)
+    return word_list
 
 def run_srape():
     """ Start scrape script and return list of single words """
     dialouge_list = get_transcript_html()
+    remove_punctuation(dialouge_list)
     single_words(dialouge_list)
 
 run_srape()
+
+
 # def _get_words(source_text):
 #     word_list = []
 #     for sentence in source_text:
