@@ -17,22 +17,21 @@ def remove_punctuation(dialouge_list):
     """ Given dialouge_list, remove all symbols such as period, question marks, period, etc """
     long_string = ' '.join(dialouge_list)
     long_string = ''.join(c for c in long_string if c not in punctuation)
-    print(long_string)
+    return long_string
 
-
-
-def single_words(dialouge_list):
+def single_words(long_string):
     """ Given dailouge list, return a list seperated by words """
-    word_list = []
-    for item in dialouge_list:
-        word_list.extend(item.split())
+    word_list = long_string.split()
+    # for item in long_string:
+    #     word_list.extend(item.split())
+    print(word_list)
     return word_list
 
 def run_srape():
     """ Start scrape script and return list of single words """
     dialouge_list = get_transcript_html()
-    remove_punctuation(dialouge_list)
-    single_words(dialouge_list)
+    long_string = remove_punctuation(dialouge_list)
+    single_words(long_string)
 
 run_srape()
 
