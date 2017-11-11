@@ -35,7 +35,9 @@ def run_srape():
 
 word_list = run_srape()
 fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
-Dictogram(fish_text)
+x = Dictogram(fish_text)
+x.frequency("lala-doodoo")
+
 
 # def _get_words(source_text):
 #     word_list = []
