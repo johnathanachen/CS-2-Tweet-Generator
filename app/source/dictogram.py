@@ -31,7 +31,6 @@ class Dictogram(dict):
         """Return frequency count of given word, or 0 if word is not found."""
         if word in self.word_count:
             freq_value = self.word_count[word]
-            print(freq_value)
             return freq_value
         else:
             print(0)
@@ -41,7 +40,7 @@ def print_histogram(word_list):
     print('word list: {}'.format(word_list))
     # Create a dictogram and display its contents
     histogram = Dictogram(word_list)
-    print('dictogram: {}'.format(histogram))
+    print('dictogram: {}'.format(histogram.word_count))
     print('{} tokens, {} types'.format(histogram.tokens, histogram.types))
     for word in word_list[-2:]:
         freq = histogram.frequency(word)

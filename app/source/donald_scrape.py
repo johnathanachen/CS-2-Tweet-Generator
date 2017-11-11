@@ -2,6 +2,7 @@ import bs4 as bs
 from urllib.request import urlopen
 from string import punctuation
 import re
+from dictogram import print_histogram
 
 from dictogram import Dictogram
 
@@ -36,7 +37,7 @@ def run_srape():
 word_list = run_srape()
 fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
 x = Dictogram(fish_text)
-x.frequency("lala-doodoo")
+
 
 
 # def _get_words(source_text):
@@ -77,11 +78,3 @@ x.frequency("lala-doodoo")
 #
 #
 # sort_histogram(histo_dict)
-
-
-
-
-    # print(transcript_list)
-    # list_html = transcript_html.split('price')
-
-    # <b>Morty:</b> *rubs his eyes* What, Rick? What’s going on?<br/>
