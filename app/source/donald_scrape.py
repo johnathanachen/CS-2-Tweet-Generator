@@ -38,6 +38,7 @@ def run_srape():
 word_list = run_srape()
 fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
 x = Listogram(fish_text)
+print(len(x))
 # x._index("blue")
 # print_histogram(fish_text)
 

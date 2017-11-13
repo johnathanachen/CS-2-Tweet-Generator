@@ -13,25 +13,29 @@ class Listogram(list):
         self.types = 0  # Count of distinct word types in this histogram
         self.tokens = 0  # Total count of all word tokens in this histogram
         self.word_count = []
-        self.added_words = []
         # Count words in given list, if any
         if word_list is not None:
-            for word in word_list:
-                self.add_count(word)
+            self.add_count(word_list)
 
-    def add_count(self, word, count=1):
+    def add_count(self, word_list, count=1):
         """Increase frequency count of given word by given count amount."""
-        if word in self.added_words:
-            self.tokens += 1
-            word_element[1] += 1
-        else:
-            word_element = [word]
-            self.word_count.append(word_element)
-            self.added_words.append(word)
-            word_element.append(1)
-            self.types += 1
+        token = 0
+        added_words = []
+        for word in word_list:
+            if word in self.word_count:
+                self.tokens += 1
+                self.word_count[word_element][1] += 1
+                print("got it")
+                print(self.word_count[word_element][1])
+            else:
+                word_element = [word]
+                self.word_count.append(word_element)
+                added_words.append(word_element)
+                word_element.append(1)
+                self.types += 1
 
-        print(self.added_words)
+        # print(self.word_count)
+        return added_words
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
@@ -39,7 +43,6 @@ class Listogram(list):
             freq_value = self.word_count[word]
             return freq_value
         else:
-            print(0)
             return 0
 
     def __contains__(self, word):
@@ -91,4 +94,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    x = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
+    Listogram(x)
