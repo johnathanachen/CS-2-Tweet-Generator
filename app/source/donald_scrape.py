@@ -5,6 +5,7 @@ import re
 from dictogram import print_histogram
 
 from dictogram import Dictogram
+from listogram import Listogram
 
 def get_transcript_html():
     """ Scrape site for transcript and returns all speech sections in a list """
@@ -36,8 +37,8 @@ def run_srape():
 
 word_list = run_srape()
 fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
-x = Dictogram(fish_text)
-
+x = Listogram(fish_text)
+# x.__contains__("hello")
 
 
 # def _get_words(source_text):
