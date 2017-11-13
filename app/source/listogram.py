@@ -12,7 +12,8 @@ class Listogram(list):
         # Add properties to track useful word counts for this histogram
         self.types = 0  # Count of distinct word types in this histogram
         self.tokens = 0  # Total count of all word tokens in this histogram
-        self.word_count = {}
+        self.word_count = []
+        self.added_words = []
         # Count words in given list, if any
         if word_list is not None:
             for word in word_list:
@@ -20,12 +21,17 @@ class Listogram(list):
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
-        if word in self.word_count:
-            self.word_count[word] += 1
+        if word in self.added_words:
             self.tokens += 1
+            word_element[1] += 1
         else:
-            self.word_count[word] = 1
+            word_element = [word]
+            self.word_count.append(word_element)
+            self.added_words.append(word)
+            word_element.append(1)
             self.types += 1
+
+        print(self.added_words)
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
@@ -39,7 +45,6 @@ class Listogram(list):
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
         if word in self.word_count:
-            print("true")
             return True
         else:
             return False
@@ -47,20 +52,18 @@ class Listogram(list):
     def _index(self, target):
         """Return the index of entry containing given target word if found in
         this histogram, or None if target word is not found."""
-        print("hi")
-        does_contain = __contains__(target)
+        does_contain = self.__contains__(target)
+        index_of = list(self.word_count.keys()).index(target)
         if does_contain == True:
-            return does_contain.index()
+            return index_of
         else:
             None
-        # TODO: Implement linear search to find index of entry with target word
-
 
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
     # Create a listogram and display its contents
     histogram = Listogram(word_list)
-    print('listogram: {}'.format(histogram))
+    print('listogram: {}'.format(histogram.word_count))
     print('{} tokens, {} types'.format(histogram.tokens, histogram.types))
     for word in word_list[-2:]:
         freq = histogram.frequency(word)
