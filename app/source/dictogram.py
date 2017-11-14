@@ -36,6 +36,11 @@ class Dictogram(dict):
             print(0)
             return 0
 
+    def return_random_word(self):
+        # Another way:  Should test: random.choice(histogram.keys())
+        random_key = random.sample(self, 1)
+        return random_key[0]
+
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
     # Create a dictogram and display its contents
