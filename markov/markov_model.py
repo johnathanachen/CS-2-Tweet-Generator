@@ -28,7 +28,6 @@ def generate_random_start(model):
         while end_word == 'END':
             end_word = model['END'].return_weighted_random_word()
         return end_word
-    print(random.choice(list(model.keys())))
     return random.choice(list(model.keys()))
     pass
 
@@ -58,6 +57,6 @@ if __name__ == '__main__':
     clean_text_list = ["how", "much", "wood", "would", "a", "wood", "chuck", "chuck", "if", "a", "wood", "chuck", "could", "chuck", "wood"]
     markov_chain = markov_chain(clean_text_list)
     generate_random_start(markov_chain)
-    # sentence = generate_sentence(10, markov_chain)
+    sentence = generate_sentence(10, markov_chain)
     # # sentence = generate_sentence_with_higher_order(10, higher_order_markov_chain)
-    # print(sentence)
+    print(sentence)
