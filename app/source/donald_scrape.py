@@ -6,49 +6,63 @@ from dictogram import print_histogram
 from pathlib import Path
 
 from dictogram import Dictogram
-from listogram import *
 
 
-def get_transcript_html():
-    """ Scrape site for transcript and returns all speech sections in a list """
-    transcript_url = 'http://time.com/4912055/donald-trump-phoenix-arizona-transcript/'
-    transcript_url_request = urlopen(transcript_url)
-    transcript_html = transcript_url_request.read()
-    transcript_html = transcript_html.decode('utf-8')
-    transcript_list = bs.BeautifulSoup(transcript_html, "lxml").find_all('figure', attrs={"class":"blockquote"})
-    dialouge_list = re.findall( '<p>TRUMP: (.*?)</p>', str(transcript_list), re.DOTALL)
-    return dialouge_list
+class Scrape():
 
-def write_to_text_file(long_string):
-    scraped_file = Path("transcript.txt")
-    if scraped_file.is_file():
-        f = open("transcript.txt","a+")
-        f.write(long_string)
-    else:
-        f = open("transcript.txt","w+")
-        f.write(long_string)
+    def __init__(self):
+        self = self.scrape()
 
-def remove_punctuation(dialouge_list):
-    """ Generates all dialouge of Trump in a single string """
-    long_string = ' '.join(dialouge_list)
-    long_string = ''.join(c for c in long_string if c not in punctuation)
-    write_to_text_file(long_string)
+    def _get_transcript_html(self):
+        """ Scrape site for transcript and returns all speech sections in a list """
+        transcript_url = 'http://time.com/4912055/donald-trump-phoenix-arizona-transcript/'
+        transcript_url_request = urlopen(transcript_url)
+        transcript_html = transcript_url_request.read()
+        transcript_html = transcript_html.decode('utf-8')
+        transcript_list = bs.BeautifulSoup(transcript_html, "lxml").find_all('figure', attrs={"class":"blockquote"})
+        dialouge_list = re.findall( '<p>TRUMP: (.*?)</p>', str(transcript_list), re.DOTALL)
+        return dialouge_list
 
-def single_words(long_string):
-    """ Given dailouge list, return a list seperated by words """
-    with open('transcript.txt', 'r') as myfile:
-        long_string = myfile.read()
-    word_list = long_string.split()
-    return word_list
+    def _write_to_text_file(self, dialouge_list):
+        scraped_file = Path("transcript.txt")
+        if scraped_file.is_file():
+            f = open("transcript.txt","a+")
+            for sentence in dialouge_list:
+                f.write(sentence)
+        else:
+            f = open("transcript.txt","w+")
+            for sentence in dialouge_list:
+                f.write(sentence)
 
-def run_srape():
-    """ Start scrape script and return list of single words """
-    dialouge_list = get_transcript_html()
-    long_string = remove_punctuation(dialouge_list)
-    word_list = single_words(long_string)
-    return word_list
+    def scrape(self):
+        dialouge_list = self._get_transcript_html()
+        self._write_to_text_file(dialouge_list)
 
-word_list = run_srape()
+Scrape()
+
+
+    # def _remove_punctuation(self, long_string):
+    #     """ Generates all dialouge of Trump in a single string """
+    #     long_string = ' '.join(dialouge_list)
+    #     long_string = ''.join(c for c in long_string if c not in punctuation)
+    #     self._write_to_text_file(long_string)
+    #
+    # def _single_words(self, long_string):
+    #     """ Given dailouge list, return a list seperated by words """
+    #     with open('transcript.txt', 'r') as myfile:
+    #         long_string = myfile.read()
+    #     word_list = long_string.split()
+    #     return word_list
+    #
+    # def scrape(self):
+    #     """ Start scrape script and return list of single words """
+    #     dialouge_list = self._get_transcript_html()
+    #     long_string = self._remove_punctuation(dialouge_list)
+    #     word_list = self._single_words(long_string)
+    #     return word_list
+
+
+# word_list = run_srape()
 # fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
 # x = Listogram(fish_text)
 # print(len(x))
