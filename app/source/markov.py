@@ -3,14 +3,12 @@ import random
 from collections import deque
 import re
 
-class Markov(data):
+class Markov():
 
-    def __init__(self, data):
-        self.data = data
-        self.model = _
-        markov_chain(self.data)
+    def __init__(self, data, length):
+        self.main(data, length)
 
-    def _markov_chain(data):
+    def _markov_chain(self, data):
         """ Markov model """
         #Dictionary that stores windows as the key in the key-value pair and then the value
         #for each key is a dictogram
@@ -26,17 +24,17 @@ class Markov(data):
         return markov_chain
 
     # Walk our model
-    def _generate_random_start(model):
+    def _generate_random_start(self, model):
         # Generate a "valid" starting word.
         # A valid starting word are words that start a sentence
         return random.choice(list(model.keys()))
 
 
     # Generating sentence using first order markov_model
-    def generate_sentence(length, markov_model):
+    def generate_sentence(self, length, markov_model):
         # length parameter is length of the sentence
         # Create first word
-        current_word = _generate_random_start(markov_model)
+        current_word = self._generate_random_start(markov_model)
         # Save first word to sentence list
         sentence = [current_word]
         # Loop through the length of sentence provided
@@ -50,14 +48,12 @@ class Markov(data):
             # Append the new current word until the sentence length is formed
             sentence.append(current_word)
         sentence[0] = sentence[0].capitalize()
-        return ' '.join(sentence) + '.'
+        sentence = ' '.join(sentence) + '.'
         return sentence
 
+    def main(self, data, length):
+        markov_chain = self._markov_chain(data)
+        sentence = self.generate_sentence(length, markov_chain)
 
-if __name__ == '__main__':
-    clean_text_list = ["how", "much", "wood", "would", "a", "wood", "chuck", "chuck", "if", "a", "wood", "chuck", "could", "chuck", "wood"]
-    markov = Markov(clean_text_list)
-    sentence = markov.generate_sentence(10)
-    # markov_chain = markov.markov_chain(clean_text_list)
-    # sentence = generate_sentence(10, markov_chain)
-    print(sentence)
+# data = ["how", "much", "wood", "would", "a", "wood", "chuck", "chuck", "if", "a", "wood", "chuck", "could", "chuck", "wood"]
+# Markov(data, 10)

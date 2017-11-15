@@ -1,7 +1,8 @@
 from string import punctuation
 
 class Clean():
-
+    """ Returns a list of single words """
+    
     def __init__(self, file_name):
         self.file_name = file_name
         self = self.clean_text(self.file_name)
@@ -22,7 +23,7 @@ class Clean():
     def clean_text(self, file_name):
         long_string = self._remove_punctuation(file_name)
         word_list = self._single_words(long_string)
-        print(word_list)
+        # print(word_list)
         return word_list
 
 # file_name = "transcript.txt"

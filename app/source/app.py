@@ -1,10 +1,8 @@
-from donald_scrape import run_srape
-from tokenize import histogram
-import sample
+from cleanup import Clean
+from markov import Markov
 
-# import cleanup
-# import word_count
-# import sentence
+file_name = "transcript.txt"
+data = Clean(file_name)
+x = Markov(data, 10)
 
-word_list = run_srape()
-histogram(word_list)
+print(x)
