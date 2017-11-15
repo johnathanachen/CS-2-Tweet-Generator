@@ -2,7 +2,7 @@ from cleanup import Clean
 from markov import Markov
 
 file_name = "transcript.txt"
-data = Clean(file_name)
-x = Markov(data, 10)
+data = Clean().clean_text(file_name)
+sentence = Markov().main(data, 10)
 
-print(x)
+print(sentence)

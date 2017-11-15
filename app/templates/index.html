@@ -14,7 +14,7 @@
          <div class="tweet--user-name">Donald Trump <img class="verified" src="{{ url_for('static', filename='verified.png') }}" alt="" /><span>@PresidentTrump</span></div>
        </div>
 
-       <p class="tweet--body">{{ random-tweet-text }}</p>
+       <p class="tweet--body">{{ sentence }}</p>
 
        <div class="tweet--time">11:11 AM - 1 Jan 14</div>
 
@@ -25,7 +25,9 @@
          <i class="fa fa-reply"></i>
          <div class="new-tweet">
          <span>51 retweets</span>
-         <button type="submit" class="new-tweet-btn">New Tweet</button>
+         <form action="/">
+             <button action="{{ url_for('hello') }}" class="new-tweet-btn">New Tweet</button>
+         </form>
         </div>
        </div>
      </div>

@@ -1,16 +1,15 @@
 from flask import Flask, render_template
-from dictogram import Dictogram
-from markov_chain import Markov
-from donald_scrape import Scrape
+from cleanup import Clean
+from markov import Markov
 
 app = Flask(__name__)
 
-file_name = "transcript.txt"
-word_list = cleanup.clean_up_words_from_file(file_name)
-
 @app.route('/')
-def hello(random-tweet-text):
-    return render_template("index.html", random-tweet-text=random-tweet-text)
+def hello():
+    file_name = "transcript.txt"
+    data = Clean().clean_text(file_name)
+    sentence = Markov().main(data, 10)
+    return render_template("index.html", sentence=sentence)
 
 
 if __name__ == '__main__':
