@@ -8,6 +8,7 @@ from pathlib import Path
 from dictogram import Dictogram
 from listogram import *
 
+
 def get_transcript_html():
     """ Scrape site for transcript and returns all speech sections in a list """
     transcript_url = 'http://time.com/4912055/donald-trump-phoenix-arizona-transcript/'
@@ -35,6 +36,8 @@ def remove_punctuation(dialouge_list):
 
 def single_words(long_string):
     """ Given dailouge list, return a list seperated by words """
+    with open('transcript.txt', 'r') as myfile:
+        long_string = myfile.read()
     word_list = long_string.split()
     return word_list
 
