@@ -1,15 +1,13 @@
-from flask import Flask
-import cleanup
-import tokenize
-import word_count
-import sample
-import sentence
+from flask import Flask, render_template
+from dictogram import Dictogram
 
 app = Flask(__name__)
 
+word_list = cleanup.clean_up_words_from_file(file_name)
+
 @app.route('/')
-def hello():
-    return "hello the name is Johno and I love to ing and dance"
+def hello(random-tweet-text):
+    return render_template("index.html", random-tweet-text=random-tweet-text)
 
 
 if __name__ == '__main__':

@@ -3,6 +3,7 @@ from urllib.request import urlopen
 from string import punctuation
 import re
 from dictogram import print_histogram
+from pathlib import Path
 
 from dictogram import Dictogram
 from listogram import *
@@ -17,11 +18,20 @@ def get_transcript_html():
     dialouge_list = re.findall( '<p>TRUMP: (.*?)</p>', str(transcript_list), re.DOTALL)
     return dialouge_list
 
+def write_to_text_file(long_string):
+    scraped_file = Path("transcript.txt")
+    if scraped_file.is_file():
+        f = open("transcript.txt","a+")
+        f.write(long_string)
+    else:
+        f = open("transcript.txt","w+")
+        f.write(long_string)
+
 def remove_punctuation(dialouge_list):
-    """ Given dialouge_list, remove all symbols such as period, question marks, period, etc """
+    """ Generates all dialouge of Trump in a single string """
     long_string = ' '.join(dialouge_list)
     long_string = ''.join(c for c in long_string if c not in punctuation)
-    return long_string
+    write_to_text_file(long_string)
 
 def single_words(long_string):
     """ Given dailouge list, return a list seperated by words """
@@ -36,9 +46,9 @@ def run_srape():
     return word_list
 
 word_list = run_srape()
-fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
-x = Listogram(fish_text)
-print(len(x))
+# fish_text = ['one', 'fish', 'two', 'fish', 'red', 'fish', 'blue', 'fish']
+# x = Listogram(fish_text)
+# print(len(x))
 # x._index("blue")
 # print_histogram(fish_text)
 

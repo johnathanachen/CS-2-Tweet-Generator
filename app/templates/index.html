@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rick & Morty Tweet Generator</title>
-    <link rel="stylesheet" href="/static/stylesheets/style.css">
+<head>
+    <title>Donald Trump Tweet Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-      <img src="/static/banner1.jpg" style="width: 100%;">
-      <div style="display: flex; justify-content: space-around;">
-          <img src="/static/rick.png">
-          <img src="/static/morty.png">
-      </div>
-  </body>
-</html>
+</head>
+ <body>
+     <div class="tweet">
+       <a href="#" class="follow"><i class="fa fa-twitter"></i>Follow</a>
+
+       <div class="tweet--user">
+         <img class="tweet--user-avatar profile_pic" src="{{ url_for('static', filename='donald.jpg') }}" alt="" />
+         <div class="tweet--user-name">Donald Trump <img class="verified" src="{{ url_for('static', filename='verified.png') }}" alt="" /><span>@PresidentTrump</span></div>
+       </div>
+
+       <p class="tweet--body">{{ random-tweet-text }}</p>
+
+       <div class="tweet--time">11:11 AM - 1 Jan 14</div>
+
+       <div class="tweet--actions">
+         <i class="fa fa-ellipsis-h"></i>
+         <i class="fa fa-heart"></i>
+         <i class="fa fa-retweet"></i>
+         <i class="fa fa-reply"></i>
+         <div class="new-tweet">
+         <span>51 retweets</span>
+         <button type="submit" class="new-tweet-btn">New Tweet</button>
+        </div>
+       </div>
+     </div>
+     <!-- <p>This is a fake ass tweet from Donald Trump. Trust me, I'm not lying. Bet you can't guess if the Tweet generated is real or not. Go on, give it a shot.</p> -->
+</body>
