@@ -3,6 +3,8 @@ import random
 from collections import deque
 import re
 
+from cleanup import Clean
+
 class Markov():
 
     def __init__(self):
@@ -55,8 +57,8 @@ class Markov():
         sentence = self._generate_sentence(length, markov_chain)
         return sentence
 
-# file_name = "transcript.txt"
-# data = Clean().clean_text(file_name)
-# # Markov(data, 10)
-# x = Markov()._markov_chain(data)
-# print(x)
+file_name = "transcript.txt"
+data = Clean().clean_text(file_name)
+# x = Markov().main(data, 10)
+x = Markov()._markov_chain(data)
+print(x)

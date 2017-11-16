@@ -24,5 +24,5 @@ class Clean():
         word_list = self._single_words(long_string)
         return word_list
 
-file_name = "transcript.txt"
-Clean(file_name)
+# file_name = "transcript.txt"
+# Clean(file_name)

@@ -4,10 +4,11 @@ from markov import Markov
 
 app = Flask(__name__)
 
+file_name = "transcript.txt"
+data = Clean().clean_text(file_name)
+
 @app.route('/')
 def hello():
-    file_name = "transcript.txt"
-    data = Clean().clean_text(file_name)
     sentence = Markov().main(data, 10)
     return render_template("index.html", sentence=sentence)
 

@@ -3,6 +3,7 @@
 <head>
     <title>Donald Trump Tweet Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
  <body>
@@ -25,11 +26,19 @@
          <i class="fa fa-reply"></i>
          <div class="new-tweet">
          <span>51 retweets</span>
+        </div>
+       </div>
+     </div>
+     <div class="button--wrapper">
+         <form action="/">
+             <button action="{{ url_for('hello') }}" class="new-tweet-btn real-btn">Real</button>
+         </form>
          <form action="/">
              <button action="{{ url_for('hello') }}" class="new-tweet-btn">New Tweet</button>
          </form>
-        </div>
-       </div>
+         <form action="/">
+             <button action="{{ url_for('hello') }}" class="new-tweet-btn fake-btn">Fake</button>
+         </form>
      </div>
      <!-- <p>This is a fake ass tweet from Donald Trump. Trust me, I'm not lying. Bet you can't guess if the Tweet generated is real or not. Go on, give it a shot.</p> -->
 </body>
