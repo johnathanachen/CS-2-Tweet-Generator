@@ -55,5 +55,8 @@ class Markov():
         sentence = self._generate_sentence(length, markov_chain)
         return sentence
 
-# data = ["how", "much", "wood", "would", "a", "wood", "chuck", "chuck", "if", "a", "wood", "chuck", "could", "chuck", "wood"]
-# Markov(data, 10)
+# file_name = "transcript.txt"
+# data = Clean().clean_text(file_name)
+# # Markov(data, 10)
+# x = Markov()._markov_chain(data)
+# print(x)

@@ -24,11 +24,13 @@ class Scrape():
         if scraped_file.is_file():
             f = open("transcript.txt","a+")
             for sentence in dialouge_list:
+                f.write(" ")
                 f.write(sentence)
         else:
             f = open("transcript.txt","w+")
             for sentence in dialouge_list:
                 f.write(sentence)
+                f.write(" ")
 
     def scrape(self):
         dialouge_list = self._get_transcript_html()
