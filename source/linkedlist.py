@@ -53,16 +53,16 @@ class LinkedList(object):
         return self.head is None
 
     def length(self):
-        """Return the length of this linked list by traversing its nodes.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        """Return the length of this linked list by traversing its nodes."""
+        # Running time is 0(n) because it iterates through each item of the list each time
         counter = 0 # Count number of nodes in linked list
         for item in items:
             counter += 1
         return counter
 
     def append(self, item):
-        """Insert the given item at the tail of this linked list.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        """Insert the given item at the tail of this linked list."""
+        # Running time is 0(1) because it appends from the tail instead of iterating through the whole list
         node = Node(item)
         if self.tail is None:
             self.head = node
@@ -71,12 +71,17 @@ class LinkedList(object):
             self.tail.next = node
             self.tail = node
 
-    # def prepend(self, item):
-    #     """Insert the given item at the head of this linked list.
-    #     TODO: Running time: O(???) Why and under what conditions?"""
-    #     # TODO: Create new node to hold given item
-    #     # TODO: Prepend node before head, if it exists
-    #
+    def prepend(self, item):
+        """Insert the given item at the head of this linked list."""
+        # Running time is 0(1) because it prepends from the head instead of iterating through the whole list
+        node = Node(item)
+        if self.is_empty():
+            self.head = node
+            self.tail = node
+        else:
+            node.next = self.head
+            self.head = node
+
     # def find(self, quality):
     #     """Return an item from this linked list satisfying the given quality.
     #     TODO: Best case running time: O(???) Why and under what conditions?

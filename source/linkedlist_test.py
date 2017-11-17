@@ -39,17 +39,17 @@ class LinkedListTest(unittest.TestCase):
         assert ll.head.data == 'A'  # First item
         assert ll.tail.data == 'C'  # Last item
 
-#     def test_items_after_append(self):
-#         ll = LinkedList()
-#         assert ll.items() == []
-#         # Append should add new item to tail of list
-#         ll.append('A')
-#         assert ll.items() == ['A']
-#         ll.append('B')
-#         assert ll.items() == ['A', 'B']
-#         ll.append('C')
-#         assert ll.items() == ['A', 'B', 'C']
-#
+    def test_items_after_append(self):
+        ll = LinkedList()
+        assert ll.items() == []
+        # Append should add new item to tail of list
+        ll.append('A')
+        assert ll.items() == ['A']
+        ll.append('B')
+        assert ll.items() == ['A', 'B']
+        ll.append('C')
+        assert ll.items() == ['A', 'B', 'C']
+
 #     def test_items_after_prepend(self):
 #         ll = LinkedList()
 #         assert ll.items() == []
