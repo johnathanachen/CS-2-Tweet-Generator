@@ -56,9 +56,12 @@ class LinkedList(object):
         """Return the length of this linked list by traversing its nodes."""
         # Running time is 0(n) because it iterates through each item of the list each time
         counter = 0 # Count number of nodes in linked list
-        for item in items:
+        current = self.head
+        while current is not None:
+            current = current.next
             counter += 1
         return counter
+
 
     def append(self, item):
         """Insert the given item at the tail of this linked list."""
@@ -82,21 +85,26 @@ class LinkedList(object):
             node.next = self.head
             self.head = node
 
-    # def find(self, quality):
-    #     """Return an item from this linked list satisfying the given quality.
-    #     TODO: Best case running time: O(???) Why and under what conditions?
-    #     TODO: Worst case running time: O(???) Why and under what conditions?"""
-    #     # TODO: Loop through all nodes to find item where quality(item) is True
-    #     # TODO: Check if node's data satisfies given quality function
-    #
-    # def delete(self, item):
-    #     """Delete the given item from this linked list, or raise ValueError.
-    #     TODO: Best case running time: O(???) Why and under what conditions?
-    #     TODO: Worst case running time: O(???) Why and under what conditions?"""
-    #     # TODO: Loop through all nodes to find one whose data matches given item
-    #     # TODO: Update previous node to skip around node with matching data
-    #     # TODO: Otherwise raise error to tell user that delete has failed
-    #     # Hint: raise ValueError('Item not found: {}'.format(item))
+    def find(self, quality):
+        """Return an item from this linked list satisfying the given quality."""
+        # Best case of running time is O(1) when current is first
+        # If search goes through the whole lenght, it'll be O(n)
+        current = self.head
+        while current is not None:
+            if quality(current.data):
+                return current.data
+            current = current.next
+
+    def delete(self, item):
+        """Delete the given item from this linked list, or raise ValueError.
+        TODO: Best case running time: O(???) Why and under what conditions?
+        TODO: Worst case running time: O(???) Why and under what conditions?"""
+        node = Node(item)
+
+        # TODO: Loop through all nodes to find one whose data matches given item
+        # TODO: Update previous node to skip around node with matching data
+        # TODO: Otherwise raise error to tell user that delete has failed
+        # Hint: raise ValueError('Item not found: {}'.format(item))
 
 
 def test_linked_list():
