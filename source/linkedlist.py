@@ -89,6 +89,16 @@ class LinkedList(object):
         """Return an item from this linked list satisfying the given quality."""
         # Best case of running time is O(1) when current is first
         # If search goes through the whole lenght, it'll be O(n)
+        # Option 1
+        # current = self.head
+        # while current is not None: # Up to n iterations, in worst case
+        #     if quality == current.data:
+        #         return current.data  # Early exit
+        #     else:
+        #         return quality + " not found"
+        #     current = current.next # Constant time
+
+        # Option 2
         current = self.head
         while current is not None:
             if quality(current.data):
@@ -99,12 +109,32 @@ class LinkedList(object):
         """Delete the given item from this linked list, or raise ValueError.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
-        node = Node(item)
+        current = Node(item)
+        previous = None
+        # Delete if item is the first one
+        if current.data = item:
+            current = self.head.next
+            self.head = current
+        else:
+            # Delete if item is in middle
+            current = self.head
+            previous = current
+            while current.data is not item:
+                if current.data == item:
+                    current = current.next
+                    previous.next = current
+
+                else:
+
+
+
+
 
         # TODO: Loop through all nodes to find one whose data matches given item
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+        pass
 
 
 def test_linked_list():

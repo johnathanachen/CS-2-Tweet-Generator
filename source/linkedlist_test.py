@@ -122,6 +122,14 @@ class LinkedListTest(unittest.TestCase):
         assert ll.head.data == 'A'  # New head
         assert ll.tail.data == 'C'  # Unchanged
 
+
+    def test_find(self):
+        ll = LinkedList(['A', 'B', 'C'])
+        assert ll.find(lambda item: item == 'B') == 'B'  # Match equality
+        assert ll.find(lambda item: item < 'B') == 'A'  # Match less than
+        assert ll.find(lambda item: item > 'B') == 'C'  # Match greater than
+        assert ll.find(lambda item: item == 'X') is None  # No matching item
+
 # def test_length_after_delete(self):
 #     ll = LinkedList(['A', 'B', 'C', 'D', 'E'])
 #     assert ll.length() == 5
@@ -137,12 +145,6 @@ class LinkedListTest(unittest.TestCase):
 #     ll.delete('B')
 #     assert ll.length() == 0
 
-    def test_find(self):
-        ll = LinkedList(['A', 'B', 'C'])
-        assert ll.find(lambda item: item == 'B') == 'B'  # Match equality
-        assert ll.find(lambda item: item < 'B') == 'A'  # Match less than
-        assert ll.find(lambda item: item > 'B') == 'C'  # Match greater than
-        assert ll.find(lambda item: item == 'X') is None  # No matching item
 #
 #     def test_delete_with_3_items(self):
 #         ll = LinkedList(['A', 'B', 'C'])
