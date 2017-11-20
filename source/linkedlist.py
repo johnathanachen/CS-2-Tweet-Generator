@@ -106,35 +106,37 @@ class LinkedList(object):
             current = current.next
 
     def delete(self, item):
-        """Delete the given item from this linked list, or raise ValueError.
-        TODO: Best case running time: O(???) Why and under what conditions?
-        TODO: Worst case running time: O(???) Why and under what conditions?"""
-        current = Node(item)
+        """
+        Delete the given item from this linked list, or raise ValueError.
+        """
+        current = self.head
         previous = None
-        # Delete if item is the first one
-        if current.data = item:
-            current = self.head.next
-            self.head = current
-        else:
-            # Delete if item is in middle
-            current = self.head
+
+        while current is not None:
+            # Deleting the middle node
+            if current.data == item:
+                if current is not self.head and current is not self.tail:
+                    previous.next = current.next
+                    current.next = None
+                    break
+                # Deleting the first Node
+                if current is self.head:
+                    self.head = current.next
+                    current.next = None
+                # Deleting the last Node
+                if current is self.tail:
+                    if previous is not None:
+                        previous.next = None
+                    self.tail = previous
+                return
+            # Setting the previous node to the current node
             previous = current
-            while current.data is not item:
-                if current.data == item:
-                    current = current.next
-                    previous.next = current
+            # Setting the current node to the current next pointer
+            current = current.next
+        raise ValueError('Item not found: {}'.format(item))
 
-                else:
-
-
-
-
-
-        # TODO: Loop through all nodes to find one whose data matches given item
-        # TODO: Update previous node to skip around node with matching data
-        # TODO: Otherwise raise error to tell user that delete has failed
-        # Hint: raise ValueError('Item not found: {}'.format(item))
-        pass
+        def replace(self, item):
+            pass
 
 
 def test_linked_list():
