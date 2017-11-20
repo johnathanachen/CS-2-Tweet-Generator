@@ -135,9 +135,6 @@ class LinkedList(object):
             current = current.next
         raise ValueError('Item not found: {}'.format(item))
 
-        def replace(self, item):
-            pass
-
 
 def test_linked_list():
     ll = LinkedList()
