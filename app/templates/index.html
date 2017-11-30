@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
  <body>
+     <div class="title">
+         <img src="{{ url_for('static', filename='title_pic.png') }}">
+     </div>
      <div class="tweet">
        <a href="#" class="follow"><i class="fa fa-twitter"></i>Follow</a>
 
        <div class="tweet--user">
          <img class="tweet--user-avatar profile_pic" src="{{ url_for('static', filename='donald.jpg') }}" alt="" />
-         <div class="tweet--user-name">Donald Trump <img class="verified" src="{{ url_for('static', filename='verified.png') }}" alt="" /><span>@PresidentTrump</span></div>
+         <div class="tweet--user-name">Donald J. Trump <img class="verified" src="{{ url_for('static', filename='verified.png') }}" alt="" /><span>@fakeDonaldTrump</span></div>
        </div>
 
        <p class="tweet--body">{{ sentence }}</p>
@@ -25,7 +28,7 @@
          <i class="fa fa-retweet"></i>
          <i class="fa fa-reply"></i>
          <div class="new-tweet">
-         <span>51 retweets</span>
+         <span>{{ count }} retweets</span>
         </div>
        </div>
      </div>

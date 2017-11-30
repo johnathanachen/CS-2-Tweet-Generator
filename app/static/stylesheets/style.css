@@ -9,6 +9,18 @@ body {
   background: #F5F8FA;
 }
 
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title>img {
+    width: auto;
+    height: 300px;
+    margin-top: 40px;
+    margin-bottom: -40px;
+}
+
 .tweet {
   margin: 10vh auto;
   border: 1px solid #eee;

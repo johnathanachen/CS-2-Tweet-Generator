@@ -10,7 +10,24 @@ data = Clean().clean_text(file_name)
 @app.route('/')
 def hello():
     sentence = Markov().main(data, 10)
-    return render_template("index.html", sentence=sentence)
+    count = read_current_count()
+    new_count = write_new_count()
+    return render_template("index.html", sentence=sentence, count=count)
+
+def read_current_count():
+    text_file = open("counter.txt", "r")
+    count = text_file.read()
+    return count
+
+def write_new_count():
+    f = open("counter.txt", "r")
+    data = f.read()
+    new_count = int(data) + 1
+    string_format = str(new_count)
+    f = open("counter.txt", "w")
+    print(string_format)
+    f.write(string_format)
+
 
 
 if __name__ == '__main__':

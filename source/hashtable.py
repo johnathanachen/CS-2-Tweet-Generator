@@ -82,14 +82,15 @@ class HashTable(object):
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
-        TODO: Running time: O(???) Why and under what conditions?"""
+        Running time: O(1) when finding index and appending
+        Running time: O(n) when searching for item within bucket"""
         index = self._bucket_index(key)
-        entry = (key, value)
-        self.buckets[index].append(entry)
-
-    def update(self, key, value):
-        # TODO: update
-        pass
+        # Get bucket specified by key from list
+        bucket = self.buckets[index]
+        # Check if bucket exists to add or replace
+        if self.contains(key):
+            self.delete(key)
+        self.buckets[index].append((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError."""
