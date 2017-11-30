@@ -60,28 +60,25 @@ class HashTable(object):
             count += 1
         return count
 
-    # def contains(self, key):
-    #     """Return True if this hash table contains the given key, or False.
-    #     Running time: O(1) if bucket contains only one entry
-    #     Running time: O(n) if bucket contains multiple entries"""
-    #     index = self._bucket_index(key)
-    #     for bucket in self.buckets:
-    #         if bucket[index] in self.buckets:
-    #             return True
-    #         else:
-    #             return False
-    #
-    # def get(self, key):
-    #     """Return the value associated with the given key, or raise KeyError.
-    #     TODO: Running time: O(???) Why and under what conditions?"""
-    #     index = self._bucket_index(key)
-    #     if bucket[index] in self.buckets:
-    #         return bucket[index].data
-    #     # TODO: Find bucket where given key belongs
-    #     # TODO: Check if key-value entry exists in bucket
-    #     # TODO: If found, return value associated with given key
-    #     # TODO: Otherwise, raise error to tell user get failed
-    #     # Hint: raise KeyError('Key not found: {}'.format(key))
+    def contains(self, key):
+        """Return True if this hash table contains the given key, or False.
+        Running time: O(1) if bucket contains only one entry
+        Running time: O(n) if bucket contains multiple entries"""
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+        found = bucket.find(lambda item: item[0] == key)
+        return bool(found)
+
+
+
+    def get(self, key):
+        """Return the value associated with the given key, or raise KeyError."""
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
+        found = bucket.find(lambda item: item[0] == key)
+        if found is not None:
+            return found[1]
+        raise KeyError("Key not longer exists in this hash table")
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
@@ -90,25 +87,36 @@ class HashTable(object):
         entry = (key, value)
         self.buckets[index].append(entry)
 
-        # TODO: Find bucket where given key belongs
-        # TODO: Check if key-value entry exists in bucket
-        # TODO: If found, update value associated with given key
-        # TODO: Otherwise, insert given key-value entry into bucket
+    def update(self, key, value):
+        # TODO: update
+        pass
 
-    # def delete(self, key):
-    #     """Delete the given key from this hash table, or raise KeyError.
-    #     TODO: Running time: O(???) Why and under what conditions?"""
-    #     # TODO: Find bucket where given key belongs
-    #     # TODO: Check if key-value entry exists in bucket
-    #     # TODO: If found, delete entry associated with given key
-    #     # TODO: Otherwise, raise error to tell user delete failed
-    #     # Hint: raise KeyError('Key not found: {}'.format(key))
-
+    def delete(self, key):
+        """Delete the given key from this hash table, or raise KeyError."""
+        index = self._bucket_index(key) # O(1)
+        bucket = self.buckets[index] # O(1)
+        found = bucket.find(lambda item: item[0] == key) # O(n)
+        if found is not None:
+            bucket.delete(found)
+            return
+        else:
+            raise KeyError("Key not longer exists in this hash table")
 
 def test_hash_table():
     ht = HashTable()
     ht.set("Johnathan", 9000)
+    ht.set("Jessica", "likes candy")
+
+    if ht.contains("Johnathan"):
+        print("ht contains 'Johnathan': True")
+
+    ht.delete("Johnathan")
+
     print('hash table: {}'.format(ht))
+    # print('all keys: {}'.format(ht.keys()))
+    # print('all values: {}'.format(ht.values()))
+    # print('all items: {}'.format(ht.items()))
+    # print('length: {}'.format(ht.length()))
 
     # print('\nTesting set:')
     # for key, value in [('I', 1), ('V', 5), ('X', 10)]:
@@ -122,7 +130,7 @@ def test_hash_table():
     #     print('get({!r}): {!r}'.format(key, value))
 
     # print('contains({!r}): {}'.format('X', ht.contains('X')))
-    print('length: {}'.format(ht.length()))
+
 
     # Enable this after implementing delete method
     # delete_implemented = False
