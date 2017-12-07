@@ -3,12 +3,42 @@
 <head>
     <title>Donald Trump Tweet Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+    <script type="text/javascript" href="{{ url_for('static', filename='leaderboard.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='fa/css/font-awesome.min.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+
+    getID = function(x){
+      return document.getElementById(x);
+    }
+
+    submitData = function(){
+
+        var player = getID("player_name").value;
+        var score = getID("player_score").value;
+
+        var playerCell = document.createElement("mark");
+        var playerCellText = document.createTextNode(player);
+        playerCell.appendChild(playerCellText);
+
+        var scoreCell = document.createElement("small");
+        var scoreCellText = document.createTextNode(score);
+        scoreCell.appendChild(scoreCellText);
+
+        var row = document.createElement("li");
+        row.appendChild(playerCell);
+        row.appendChild(scoreCell);
+
+        getID("player").appendChild(row);
+    };
+
+
+    </script>
 </head>
  <body>
      <div class="title">
          <img src="{{ url_for('static', filename='title_pic.png') }}">
+         <div id="score" class="text">0</div>
      </div>
      <div class="tweet">
        <a href="#" class="follow"><i class="fa fa-twitter"></i>Follow</a>
@@ -32,16 +62,19 @@
         </div>
        </div>
      </div>
-     <div class="button--wrapper">
-         <form action="/">
-             <button action="{{ url_for('hello') }}" class="new-tweet-btn real-btn">Real</button>
-         </form>
-         <form action="/">
-             <button action="{{ url_for('hello') }}" class="new-tweet-btn">New Tweet</button>
-         </form>
-         <form action="/">
-             <button action="{{ url_for('hello') }}" class="new-tweet-btn fake-btn">Fake</button>
-         </form>
-     </div>
-     <!-- <p>This is a fake ass tweet from Donald Trump. Trust me, I'm not lying. Bet you can't guess if the Tweet generated is real or not. Go on, give it a shot.</p> -->
-</body>
+
+     <!---
+     Buttons
+    --->
+
+    <div class="button__wrapper">
+        <form action="/">
+            <button action="{{ url_for('hello') }}" class="new-tweet-btn real-btn">Real</button>
+        </form>
+        <form action="/">
+            <button action="{{ url_for('hello') }}" class="new-tweet-btn">New Tweet</button>
+        </form>
+        <form action="/">
+            <button action="{{ url_for('hello') }}" class="new-tweet-btn fake-btn">Fake</button>
+        </form>
+    </div>
