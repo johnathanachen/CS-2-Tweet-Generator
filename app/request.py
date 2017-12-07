@@ -19,5 +19,4 @@ tweets = browser.find_elements_by_class_name('tweet-text')
 
 f = open("real_tweets.txt","a+")
 for tweet in tweets:
-    f.write(tweet.text)
-    f.write(" ")
+    f.write("\n" + tweet.text + "\n")

@@ -7,7 +7,7 @@ app = Flask(__name__)
 file_name = "transcript.txt"
 data = Clean().clean_text(file_name)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def hello():
     sentence = Markov().main(data, 10)
     count = read_current_count()
@@ -28,6 +28,10 @@ def write_new_count():
     print(string_format)
     f.write(string_format)
 
+@app.route('/new_text', methods=['GET', 'POST'])
+def new_text():
+    sentence = Markov().main(data, 10)
+    return sentence
 
 
 if __name__ == '__main__':
