@@ -2,6 +2,7 @@ from scripts.dictogram import Dictogram
 from collections import deque
 import codecs
 
+# reference: Avery's code
 class MarkovChain:
 
     # Max amount of attempts we have to generate a new sentence
